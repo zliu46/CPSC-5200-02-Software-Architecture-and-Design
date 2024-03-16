@@ -1,0 +1,325 @@
+﻿@page
+@model AddressInputModel
+@{
+    ViewData["Title"] = "Address Input";
+}
+
+
+
+<form method="post" id="addressForm">
+    <!-- Other form elements -->
+    <div>
+        <label asp-for="country">Country:</label>
+        <select asp-for="country" id="countryDropdown" class="form-control">
+            <option value=""></option>
+            <option value="Brazil">Brazil</option>
+            <option value="Canada">Canada</option>
+            <option value="Germany">Germany</option>
+            <option value="India">India</option>
+            <option value="Japan">Japan</option>
+            <option value="Korea">North and South Korea</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Spain">Spain</option>
+            <option value="UK">UK</option>
+            <option value="USA">USA</option>
+            <!-- Add more countries as needed -->
+        </select>
+    </div>
+
+    <div id="spInputs" style="display: none;">
+        <div>
+            <label asp-for="nameSP">Name:</label>
+            <input asp-for="nameSP" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="streetNameSP">Street name:</label>
+            <input asp-for="streetNameSP" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="houseAptNumberSP">House/Apt number:</label>
+            <input asp-for="houseAptNumberSP" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="appartmentBlockNumberSP">Appartment Details (Starwell, Floor and Door numbers):</label>
+            <input asp-for="appartmentBlockNumberSP" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="zipCodeSP">PostalCode:</label>
+            <input asp-for="zipCodeSP" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="citySP">City:</label>
+            <input asp-for="citySP" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="provinceSP">Province of Spain:</label>
+            <input asp-for="provinceSP" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    <div id="mxInputs" style="display: none;">
+        <div>
+            <label asp-for="nameMX">Name:</label>
+            <input asp-for="nameMX" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="streetNameMX">Street name:</label>
+            <input asp-for="streetNameMX" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="houseAptNumberMX">House/Apt number:</label>
+            <input asp-for="houseAptNumberMX" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="neighborhoodMX">Neighbohood name:</label>
+            <input asp-for="neighborhoodMX" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="cityMX">City:</label>
+            <input asp-for="cityMX" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="stateMX">State:</label>
+            <input asp-for="stateMX" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="zipCodeMX">PostalCode:</label>
+            <input asp-for="zipCodeMX" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    <div id="jpInputs" style="display: none;">
+        <div>
+            <label asp-for="nameJP">Name:</label>
+            <input asp-for="nameJP" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="buildingNameJP">Building Name/Number:</label>
+            <input asp-for="buildingNameJP" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="houseAptNumberIN">Town/Block number:</label>
+            <input asp-for="houseAptNumberIN" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="districJP">Ward/District:</label>
+            <input asp-for="districJP" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="cityJP">Prefecture/City:</label>
+            <input asp-for="cityJP" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="zipCodeJP">ZipCode:</label>
+            <input asp-for="zipCodeJP" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    <div id="inInputs" style="display: none;">
+        <div>
+            <label asp-for="nameAddresseeIN">Name:</label>
+            <input asp-for="nameAddresseeIN" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="sendersNameIN">Sender/Company Name (optional):</label>
+            <input asp-for="sendersNameIN" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="nameBuildingIN">Building name:</label>
+            <input asp-for="nameBuildingIN" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="houseAptNumberIN">House/Apt number:</label>
+            <input asp-for="houseAptNumberIN" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="streetNameID">Street name:</label>
+            <input asp-for="streetNameID" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="stateIN">State:</label>
+            <input asp-for="stateIN" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="zipCodeIN">ZipCode:</label>
+            <input asp-for="zipCodeIN" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    <div id="gerInputs" style="display: none;">
+        <div>
+            <label asp-for="nameGER">Name:</label>
+            <input asp-for="nameGER" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="streetNameGER">Street name:</label>
+            <input asp-for="streetNameGER" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="houseAptNumberGER">House/Apt number:</label>
+            <input asp-for="houseAptNumberGER" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="zipCodeGER">PostalCode:</label>
+            <input asp-for="zipCodeGER" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="cityGER">City:</label>
+            <input asp-for="cityGER" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    <div id="caInputs" style="display: none;">
+        <div>
+            <label asp-for="nameCA">Name:</label>
+            <input asp-for="nameCA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="houseAptNumberCA">House/Apt number:</label>
+            <input asp-for="houseAptNumberCA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="streetNumberCA">Street number:</label>
+            <input asp-for="streetNumberCA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="streetNameCA">Street name:</label>
+            <input asp-for="streetNameCA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="cityCA">City:</label>
+            <input asp-for="cityCA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="stateCA">State:</label>
+            <input asp-for="stateCA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="zipCodeCA">PostalCode:</label>
+            <input asp-for="zipCodeCA" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    <div id="brInputs" style="display: none;">
+        <div>
+            <label asp-for="nameBR">Name:</label>
+            <input asp-for="nameBR" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="streetNameBR">Street name:</label>
+            <input asp-for="streetNameBR" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="houseAptNumberBR">House/Apt number:</label>
+            <input asp-for="houseAptNumberBR" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="neighborhoodBR">Neighbohood name:</label>
+            <input asp-for="neighborhoodBR" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="cityBR">City:</label>
+            <input asp-for="cityBR" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="stateBR">State:</label>
+            <input asp-for="stateBR" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="zipCodeBR">PostalCode:</label>
+            <input asp-for="zipCodeBR" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    <div id="ukInputs" style="display: none;">
+        <div>
+            <label asp-for="nameUK">Name:</label>
+            <input asp-for="nameUK" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="houseAptNumberUK">House/Apt number:</label>
+            <input asp-for="houseAptNumberUK" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="streetNameUK">Street name:</label>
+            <input asp-for="streetNameUK" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="cityUK">City:</label>
+            <input asp-for="cityUK" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="stateUK">State or Department:</label>
+            <input asp-for="stateUK" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="zipCodeUK">PostalCode:</label>
+            <input asp-for="zipCodeUK" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    <div id="usaInputs" style="display: none;">
+        <div>
+            <label asp-for="nameUSA">Name:</label>
+            <input asp-for="nameUSA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="streetNumberUSA">Street number:</label>
+            <input asp-for="streetNumberUSA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="streetNameUSA">Street name:</label>
+            <input asp-for="streetNameUSA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="houseAptNumberUSA">House/Apt number:</label>
+            <input asp-for="houseAptNumberUSA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="cityUSA">City:</label>
+            <input asp-for="cityUSA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="stateUSA">State:</label>
+            <input asp-for="stateUSA" class="form-control" />
+        </div>
+        <div>
+            <label asp-for="zipCodeUSA">ZipCode:</label>
+            <input asp-for="zipCodeUSA" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+
+<div>
+    <p>Full Address:</p>
+    <p>@Model.fullAddress</p>
+</div>
+
+<!-- JavaScript to handle dropdown change event -->
+<script>
+    document.getElementById('countryDropdown').addEventListener('change', function () {
+        var country = this.value;
+        document.getElementById('usaInputs').style.display = (country === 'USA') ? 'block' : 'none';
+        document.getElementById('ukInputs').style.display = (country === 'UK') ? 'block' : 'none';
+        document.getElementById('brInputs').style.display = (country === 'Brazil') ? 'block' : 'none';
+        document.getElementById('caInputs').style.display = (country === 'Canada') ? 'block' : 'none';
+        document.getElementById('gerInputs').style.display = (country === 'Germany') ? 'block' : 'none';
+        document.getElementById('inInputs').style.display = (country === 'India') ? 'block' : 'none';
+        document.getElementById('jpInputs').style.display = (country === 'Japan') ? 'block' : 'none';
+        document.getElementById('mxInputs').style.display = (country === 'Mexico') ? 'block' : 'none';
+        document.getElementById('spInputs').style.display = (country === 'Spain') ? 'block' : 'none';
+        // Add more countries as needed
+    });
+</script>
+

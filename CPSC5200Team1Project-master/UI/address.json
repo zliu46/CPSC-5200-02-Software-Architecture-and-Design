@@ -1,0 +1,52 @@
+[
+  {
+    "Id": 1,
+    "Recipient": "Alice Johnson",
+    "StreetName": "Maple Street",
+    "HouseNumber": 204,
+    "City": "Springfield",
+    "State": "Illinois",
+    "ZipCode": "62704",
+    "Country": "USA"
+  },
+  {
+    "Id": 2,
+    "Recipient": "Bob Smith",
+    "StreetName": "Oak Avenue",
+    "HouseNumber": 558,
+    "City": "Raleigh",
+    "State": "North Carolina",
+    "ZipCode": "27601",
+    "Country": "USA"
+  },
+  {
+    "Id": 3,
+    "Recipient": "Carlos Rodriguez",
+    "StreetName": "Gran Via",
+    "HouseNumber": 32,
+    "City": "Madrid",
+    "State": "",
+    "ZipCode": "28013",
+    "Country": "Spain"
+  },
+  {
+    "Id": 4,
+    "Recipient": "Sophie Dubois",
+    "StreetName": "Rue de Rivoli",
+    "HouseNumber": 45,
+    "City": "Paris",
+    "State": "�le-de-France",
+    "ZipCode": "75001",
+    "Country": "France"
+  },
+  {
+    "Id": 5,
+    "Recipient": "Liu Wei",
+    "StreetName": "Dongzhimen Outer Street",
+    "HouseNumber": 220,
+    "City": "Beijing",
+    "State": "",
+    "ZipCode": "100027",
+    "Country": "China"
+  }
+]

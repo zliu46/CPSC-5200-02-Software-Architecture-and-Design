@@ -1,0 +1,145 @@
+@page
+@model AddressSearchModel
+@{
+    ViewData["Title"] = "Address Search";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center">Address Search</h1>
+            <hr>
+            <form id="searchForm" method="post" asp-page-handle="OnPostAsync">
+                <div class="form-group">
+                    <label for="countries">Select Countries:</label>
+                    <select class="form-control" id="countries" name="countries" multiple>
+                        <option value="Brazil">Brazil</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Germany">Germany</option>
+                        <option value="India">India</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Korea">North and South Korea</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="Spain">Spain</option>
+                        <option value="UK">UK</option>
+                        <option value="USA">USA</option>
+                    </select>
+                    <small class="form-text text-muted">Press <kbd>Ctrl</kbd> to select multiple countries. Click again to deselect.</small>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="searchAllCountries">
+                        <label class="form-check-label" for="searchAllCountries">
+                            Search All Countries
+                        </label>
+                    </div>
+                    <ul id="selectedCountriesList"></ul>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" class="form-control" id="address" name="address">
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+            <div id="searchResults">
+                @if (Model.SearchResults != null && Model.SearchResults.Any())
+                {
+                    <h2>Search Results:</h2>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Recipient</th>
+                            <th>Street Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Zip Code</th>
+                            <th>Country</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var result in Model.SearchResults)
+                        {
+                            <tr>
+                                <td>@result.Recipient</td>
+                                <td>@result.HouseNumber @result.StreetName</td>
+                                <td>@result.City</td>
+                                <td>@result.State</td>
+                                <td>@result.ZipCode</td>
+                                <td>@result.Country</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                    <!-- Pagination section -->
+                    @if (Model.SearchResults.Count > 25)
+                    {
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                @for (int i = 1; i <= Math.Ceiling((double)Model.SearchResults.Count / 25); i++)
+                                {
+                                    <li class="page-item @(Model.PageNumber == i ? "active" : "")">
+                                        <a class="page-link" href="#">@i</a>
+                                    </li>
+                                }
+                                <li class="page-item @(Model.PageNumber == Math.Ceiling((double)Model.SearchResults.Count / 25) ? "disabled" : "")">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    }
+                }
+                else
+                {
+                    <p>No search results found.</p>
+                }
+                @if (TempData["NoResults"] != null)
+                {
+                    <p>@TempData["NoResults"]</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Function to update the list of selected countries
+        function updateSelectedCountries() {
+            const selectedCountriesList = document.getElementById("selectedCountriesList");
+            const selectedCountries = document.querySelectorAll("#countries option:checked");
+            const searchAllCountriesCheckbox = document.getElementById("searchAllCountries");
+
+            // Clear the existing list
+            selectedCountriesList.innerHTML = "";
+
+            // If "Search All Countries" checkbox is checked, display appropriate message
+            if (searchAllCountriesCheckbox.checked) {
+                const allCountriesMessage = document.createElement("li");
+                allCountriesMessage.textContent = "All countries selected";
+                selectedCountriesList.appendChild(allCountriesMessage);
+            } else {
+                // Add selected countries to the list
+                selectedCountries.forEach(option => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = option.textContent;
+                    selectedCountriesList.appendChild(listItem);
+                });
+            }
+        }
+
+        document.getElementById("countries").addEventListener("change", updateSelectedCountries);
+        document.getElementById("searchAllCountries").addEventListener("change", updateSelectedCountries);
+        updateSelectedCountries(); // Update the list initially
+    </script>
+}
